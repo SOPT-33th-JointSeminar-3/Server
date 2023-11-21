@@ -20,14 +20,9 @@ public class NationController {
 
     private final NationService nationService;
 
-    @GetMapping("/searchv1")
-    public ResponseEntity<List<NationSearchResponse>> searchNationv1(@RequestParam String nation) {
-        return ResponseEntity.ok(nationService.searchNation(nation));
-    }
-
     @GetMapping("/search")
-    public ApiResponse<List<NationSearchResponse>> searchNation(@RequestParam String nation) {
-        return ApiResponse.success(Success.GET_SEARCH_SECCESS, nationService.searchNation(nation));
+    public ApiResponse<List<NationSearchResponse>> searchNation(@RequestParam String words) {
+        return ApiResponse.success(Success.GET_SEARCH_SECCESS, nationService.searchNation(words));
     }
 
 

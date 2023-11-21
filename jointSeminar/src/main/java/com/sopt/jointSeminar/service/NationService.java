@@ -18,11 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class NationService {
+
     private final NationJpaRepository nationJpaRepository;
 
     public List<NationSearchResponse> searchNation(String words) {
 
-        return nationJpaRepository.findByNationNameContainingOrItatCodeContainingOrCityContaining(words, words, words)
+        return nationJpaRepository.findByNationNameContainingIgnoreCaseOrItatCodeContainingIgnoreCaseOrCityContainingIgnoreCase(words, words, words)
                 .stream()
                 .map(NationSearchResponse::of)
 //                .map(nation -> NationSearchResponse.of(nation))
