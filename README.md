@@ -27,7 +27,7 @@
 <br>
 
 ## Task
-> [JointSeminar-3조 SERVER](https://www.notion.so/KOREAN-AIR-3-SERVER-0631c0575dfe44fbb6f095b0a85b1943)
+> [JointSeminar-3조 SERVER](https://shadow-shark-5d9.notion.site/KOREAN-AIR-3-SERVER-0631c0575dfe44fbb6f095b0a85b1943?pvs=4)
 
 
 | 기능 | 담당자 |
