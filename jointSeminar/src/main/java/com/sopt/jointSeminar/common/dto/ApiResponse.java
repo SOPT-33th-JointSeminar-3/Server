@@ -1,45 +1,38 @@
 package com.sopt.jointSeminar.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.sopt.jointSeminar.common.exception.Success;
-import com.sopt.jointSeminar.common.exception.Error;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.sopt.jointSeminar.common.exception.ErrorStatus;
+import com.sopt.jointSeminar.common.exception.SuccessStatus;
+import lombok.*;
 
+@Builder
 @Getter
-// 직렬화 할 때 property 순서 지정
-@JsonPropertyOrder({"code", "status", "data"})
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
 
+    private final boolean success;
     private final int code;
-    private final String mgs;
-
-//    null인 데이터는 제외
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private final String status;
     private T data;
 
-//    데이터가 없는 응답 성공
-    public static ApiResponse<?> success(Success success) {
-        return new ApiResponse<>(success.getHttpStatusCode(), success.getMsg());
+    //    데이터가 없는 응답 성공
+    public static ApiResponse<?> success(SuccessStatus success) {
+        return new ApiResponse<>(true, success.getStatusCode(), success.getMessage());
     }
 
-//    데이터가 있는 응답 성공
-    public static <T> ApiResponse<T> success(Success success, T data) {
-        return new ApiResponse<T>(success.getHttpStatusCode(), success.getMsg(), data);
+    //    데이터가 있는 응답 성공
+    public static <T> ApiResponse<T> success(SuccessStatus success, T data) {
+        return new ApiResponse<T>(true, success.getStatusCode(), success.getMessage(), data);
     }
 
-    public static ApiResponse<?> error(Error error) {
-        return new ApiResponse<>(error.getHttpStatusCode(), error.getMsg());
+    public static ApiResponse<?> error(ErrorStatus error) {
+        return new ApiResponse<>(true, error.getHttpStatusCode(), error.getMessage());
     }
 
-    public <T> ApiResponse<T> error(Error error, T data) {
-        return new ApiResponse<T>(error.getHttpStatusCode(), error.getMsg(), data);
+    public <T> ApiResponse<T> error(ErrorStatus error, T data) {
+        return new ApiResponse<T>(true, error.getHttpStatusCode(), error.getMessage(), data);
     }
 
 }
-
