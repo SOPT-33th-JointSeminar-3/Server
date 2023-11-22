@@ -20,9 +20,6 @@ public class Nation {
     private String nationName;
     private String itatCode;
     private String city;
-    
-//    일대다(항공편) 출발국가
-
 
     @Builder
     public Nation(String nationName, String itatCode, String city) {

@@ -16,6 +16,5 @@ public record NationSearchResponse(
                 nation.getCity()
         );
     }
-
 }
 

@@ -24,6 +24,4 @@ public class NationController {
     public ApiResponse<List<NationSearchResponse>> searchNation(@RequestParam String words) {
         return ApiResponse.success(Success.GET_SEARCH_SECCESS, nationService.searchNation(words));
     }
-
-
 }

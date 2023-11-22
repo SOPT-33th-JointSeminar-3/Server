@@ -26,7 +26,6 @@ public class NationService {
         return nationJpaRepository.findByNationNameContainingIgnoreCaseOrItatCodeContainingIgnoreCaseOrCityContainingIgnoreCase(words, words, words)
                 .stream()
                 .map(NationSearchResponse::of)
-//                .map(nation -> NationSearchResponse.of(nation))
                 .toList();
     }
 }
