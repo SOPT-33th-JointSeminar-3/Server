@@ -1,27 +1,21 @@
 package com.sopt.jointSeminar.common.exception;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 @Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum Success {
-
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+public enum SuccessStatus {
+    POST_GET_OK(HttpStatus.OK,"게시물 조회 성공"),
     PROCESS_SUCCESS(HttpStatus.OK, "OK"),
     GET_SEARCH_SECCESS(HttpStatus.OK, "국가 조회 성공");
 
-
-
-
     private final HttpStatus httpStatus;
-    private final String msg;
+    private final String message;
 
-
-//    현재 상태 코드 반환
-    public int getHttpStatusCode() {
-        return httpStatus.value();
+    public int getStatusCode() {
+        return this.httpStatus.value();
     }
-
 }
