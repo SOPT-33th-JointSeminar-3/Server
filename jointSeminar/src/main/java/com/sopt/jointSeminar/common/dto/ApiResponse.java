@@ -5,6 +5,8 @@ import com.sopt.jointSeminar.common.exception.ErrorStatus;
 import com.sopt.jointSeminar.common.exception.SuccessStatus;
 import lombok.*;
 
+import javax.lang.model.type.ErrorType;
+
 @Builder
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -28,11 +30,16 @@ public class ApiResponse<T> {
     }
 
     public static ApiResponse<?> error(ErrorStatus error) {
-        return new ApiResponse<>(true, error.getHttpStatusCode(), error.getMessage());
+        return new ApiResponse<>(false, error.getHttpStatusCode(), error.getMessage());
     }
 
     public <T> ApiResponse<T> error(ErrorStatus error, T data) {
-        return new ApiResponse<T>(true, error.getHttpStatusCode(), error.getMessage(), data);
+        return new ApiResponse<T>(false, error.getHttpStatusCode(), error.getMessage(), data);
     }
+
+    public static <T> ApiResponse<Exception> error(ErrorStatus errorStatus, Exception e) {
+        return new ApiResponse<>(false, errorStatus.getHttpStatusCode(), errorStatus.getMessage(), e);
+    }
+
 
 }
