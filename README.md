@@ -14,17 +14,18 @@
 
 <br>
 
-## Architecture
-
-<br>
-
-
-
 ## ER Diagram
 <img width="910" alt="스크린샷 2023-11-22 17 02 47" src="https://github.com/SOPT-33th-JointSeminar-3/Server/assets/76610340/746f56f0-599b-4e62-a4e5-b042c322646f">
 
 <br>
 <br>
+
+## Architecture
+<img width="910" alt="스크린샷 2023-11-27 19 18 30" src="https://github.com/SOPT-33th-JointSeminar-3/Server/assets/76610340/4d0b212f-576e-4ad7-8923-06533ab82c5f">
+
+<br>
+<br>
+
 
 ## Task
 > [JointSeminar-3조 SERVER](https://shadow-shark-5d9.notion.site/KOREAN-AIR-3-SERVER-0631c0575dfe44fbb6f095b0a85b1943?pvs=4)
