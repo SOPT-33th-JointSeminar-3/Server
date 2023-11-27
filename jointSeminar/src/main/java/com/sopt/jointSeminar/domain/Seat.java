@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 @Table(name = "seat")
-public class Seat {
+public class Seat implements Comparable<Seat> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,14 @@ public class Seat {
 
     private String seatClass;
     private int price;
+
+    @Override
+    public int compareTo(Seat seat) {
+        if (seat.price < price) {
+            return 1;
+        } else if (seat.price > price) {
+            return -1;
+        }
+        return 0;
+    }
 }

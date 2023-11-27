@@ -41,4 +41,20 @@ public class FlightService {
                 .map(seat -> SeatGetResponse.of(seat))
                 .toList();
     }
+
+    public int getLowestPrice() {
+        List<Seat> allSeats = seatJpaRepository.findAll();
+        Collections.sort(allSeats);
+        return allSeats.get(0).getPrice();
+    }
+
+    public Boolean isLowestFlight(Flight flight) {
+        int lowestPrice = getLowestPrice();
+        List<Seat> seats = seatJpaRepository.findByFlightFlightId(flight.getFlightId());
+        if (seats.size() > 0) {
+            Collections.sort(seats);
+            return (seats.get(0).getPrice() == lowestPrice);
+        }
+        return false;
+    }
 }
