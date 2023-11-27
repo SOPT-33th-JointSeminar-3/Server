@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public enum SuccessStatus {
+    FLIGHT_GET_OK(HttpStatus.OK, "항공편 조회 성공"),
+    SEAT_GET_OK(HttpStatus.OK, "전체 좌석 조회 성공"),
     POST_GET_OK(HttpStatus.OK,"게시물 조회 성공"),
     PROCESS_SUCCESS(HttpStatus.OK, "OK"),
     GET_SEARCH_SECCESS(HttpStatus.OK, "국가 조회 성공"),
