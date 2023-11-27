@@ -9,14 +9,16 @@ public record FlightGetResponse(
         String startTime,
         String endTime,
         String durationTime,
+        Boolean isLowestPrice,
         List<SeatGetResponse> seats
 ) {
-    public static FlightGetResponse of(Flight flight, List<SeatGetResponse> seats) {
+    public static FlightGetResponse of(Flight flight, Boolean isLowestPrice, List<SeatGetResponse> seats) {
         return new FlightGetResponse(
                 flight.getFlightId(),
                 flight.getStartTime(),
                 flight.getEndTime(),
                 flight.getDurationTime(),
+                isLowestPrice,
                 seats
         );
     }

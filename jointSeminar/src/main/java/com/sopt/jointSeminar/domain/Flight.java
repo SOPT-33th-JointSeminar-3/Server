@@ -43,6 +43,6 @@ public class Flight {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return hour+":"+min;
+        return hour + ":" + min;
     }
 }

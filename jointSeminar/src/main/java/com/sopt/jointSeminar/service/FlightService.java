@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class FlightService {
     public List<FlightGetResponse> getFlights() {
         return flightJpaRepository.findAll()
                 .stream()
-                .map(flight -> FlightGetResponse.of(flight, getSeats(flight.getFlightId())))
+                .map(flight -> FlightGetResponse.of(flight, isLowestFlight(flight), getSeats(flight.getFlightId())))
                 .toList();
     }
 
@@ -31,7 +32,7 @@ public class FlightService {
         List<Flight> flights = flightJpaRepository.findByStartNationAndEndNation(startNation, endNation);
         return flightJpaRepository.findByStartNationAndEndNation(startNation, endNation)
                 .stream()
-                .map(flight -> FlightGetResponse.of(flight, getSeats(flight.getFlightId())))
+                .map(flight -> FlightGetResponse.of(flight, isLowestFlight(flight), getSeats(flight.getFlightId())))
                 .toList();
     }
 
